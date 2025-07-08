@@ -22,9 +22,11 @@ The model cards for CyberSolve-LinAlg are published on [my Hugging Face](https:/
 
 I have developed a dedicated application for doing Nvidia GPU-optimized inference with the most recent version of *CyberSolve-LinAlg* (v1.2) in the form of a Hugging Face space. 
 
-The HF space makes use of the Python `streamlit` package, the Nvidia `apex` library, the full suite of the Hugging Face `transformers`, `tokenizers`, etc. ecosystem, and more to provide an extremely fast inference experience in querying the mathematical reasoning model through a simple UI. The finetuned versions of *CyberSolve* are no larger than about a few Gig, so they fit comfortably onto a single GPU. The dedicated inference application runs explicitly on an Nvidia T4. Try it out!
+The HF space makes use of the Python `streamlit` package, the Nvidia `apex` library, the full suite of the Hugging Face `transformers`, `tokenizers`, etc. ecosystem, and more to provide an extremely fast inference experience in querying the mathematical reasoning model through a simple UI. The finetuned versions of *CyberSolve* are no larger than about a few Gig, so they fit comfortably onto a single GPU. The dedicated inference application runs explicitly on an Nvidia T4.
 
 This GPU-optimized inference of CyberSolve can be found here: [CyberSolve-LinAlg-1.2 inference](https://huggingface.co/spaces/MarioBarbeque/CyberSolveLinAlg1.2)
+
+Try it out!
 
 ### Notebooks
 
@@ -36,4 +38,4 @@ The notebook here contains the intial steps to conduct some of this analysis whi
 
 I took an interest in evaluating not only the exact correctness of the finetuned model, but also the partial correctness of the model's predictions. That is, did it somewhat accurately predict `21` when the answer was `21`, and so on. This subtelty turns out to be a difficult task; effort was dedicated in this first notebook to decipher a method that could scale across all predictions.
 
-### Benchmarking - [Benchmarking Notebook]()
+#### Benchmarking - [Benchmarking Notebook]()
