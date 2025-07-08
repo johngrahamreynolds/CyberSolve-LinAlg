@@ -42,4 +42,18 @@ The notebook here contains the intial steps to conduct some of this analysis whi
 
 I took an interest in evaluating not only the exact correctness of the finetuned model, but also the partial correctness of the model's predictions. That is, did it somewhat accurately predict `21` when the answer was `21`, and so on. This subtelty turns out to be a difficult task; effort was dedicated in this first notebook to decipher a method that could scale across all predictions.
 
-#### Benchmarking - [Benchmarking Notebook]()
+#### Benchmarking - [Benchmarking Notebook](https://github.com/johngrahamreynolds/CyberSolve-LinAlg/blob/main/benchmarking.ipynb)
+
+This notebook contains the process of benchmarking the initial mathematical reasoning capability of the base FLAN-T5-large seq2seq model on the DeepMind mathematics evaluation dataset. 
+
+As noted above, some effort was also given here to evaluate the FLAN-T5 model's partial correctness in solving linear equations. This analysis would, in principle, provide some added understanding of the model's true, underlying mathematical reasoning ability beyond just the exactness score. Given the difficult nature of this task, I make a few notes about the struggle with defining this process sysmetically and proceed preliminarily with analysis of the exactness alone. My interest to return to this analysis later on persists nonetheless.
+
+#### Downsampled Training and Evaluation - [Downsampled Training Notebook]()
+
+Before committing to the full, expensive process of finetuning on all 2M records in the DeepMind mathematics dataset's 1D linear algebra split, we conduct first a downsampled training to convince ourselves experimentally that indeed the FLAN-T5 model will generalize and domain-adapt well to the task of mathematical reasoning. 
+
+#### Full Training and Evaluation - [Full Training and Eval Notebook]()
+
+At last, we train our model on the entirety of the DeepMind mathematics dataset's 1D linear algebra split. 
+
+### Conclusion, Intersting Future Endeavors
