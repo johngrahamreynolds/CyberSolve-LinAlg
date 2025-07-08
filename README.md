@@ -28,7 +28,9 @@ I have developed a dedicated application for doing Nvidia GPU-optimized inferenc
 
 The HF space makes use of the Python `streamlit` package, the Nvidia `apex` library, the full suite of the Hugging Face `transformers`, `tokenizers`, etc. ecosystem, and more to provide an extremely fast inference experience in querying the mathematical reasoning model through a simple UI. The finetuned versions of *CyberSolve* are no larger than about a few Gig, so they fit comfortably onto a single GPU. The dedicated inference application runs explicitly on an Nvidia T4.
 
-This GPU-optimized inference of CyberSolve can be found here: [CyberSolve-LinAlg-1.2 inference](https://huggingface.co/spaces/MarioBarbeque/CyberSolveLinAlg1.2)
+This GPU-optimized inference of CyberSolve can be found here: [CyberSolve-LinAlg-1.2 inference](https://huggingface.co/spaces/MarioBarbeque/CyberSolveLinAlg1.2). 
+
+If the HF space is asleep, simply restart it and the compute instance will be ready in less than 5 minutes.
 
 Try it out!
 
@@ -48,12 +50,31 @@ This notebook contains the process of benchmarking the initial mathematical reas
 
 As noted above, some effort was also given here to evaluate the FLAN-T5 model's partial correctness in solving linear equations. This analysis would, in principle, provide some added understanding of the model's true, underlying mathematical reasoning ability beyond just the exactness score. Given the difficult nature of this task, I make a few notes about the struggle with defining this process sysmetically and proceed preliminarily with analysis of the exactness alone. My interest to return to this analysis later on persists nonetheless.
 
-#### Downsampled Training and Evaluation - [Downsampled Training Notebook]()
+#### Downsampled Training and Evaluation - [Downsampled Training Notebook](https://github.com/johngrahamreynolds/CyberSolve-LinAlg/blob/main/downsampled_training.ipynb)
 
 Before committing to the full, expensive process of finetuning on all 2M records in the DeepMind mathematics dataset's 1D linear algebra split, we conduct first a downsampled training to convince ourselves experimentally that indeed the FLAN-T5 model will generalize and domain-adapt well to the task of mathematical reasoning. 
 
-#### Full Training and Evaluation - [Full Training and Eval Notebook]()
+I faced a number of odd hurdles in this initial training process as I discovered the best and most elegant method for conducting distributed training on a system of Azure cloud-provided Nvidia GPUs in the Databricks notebook environment. As such, there are a number of warnings generated and even some errors given after completing training and evaluation due to the distributed command cells failing to terminate properly. Despite this, the training and evaluation steps still took place as expected and were saved to storage. Intermediate outputs about evaluation scores per epoch are still available.
 
-At last, we train our model on the entirety of the DeepMind mathematics dataset's 1D linear algebra split. 
+#### Full Training and Evaluation - [Full Training and Eval Notebook](https://github.com/johngrahamreynolds/CyberSolve-LinAlg/blob/main/full_training_and_eval.ipynb)
+
+At last, we train our model on the entirety of the DeepMind mathematics dataset's 1D linear algebra split and evaluate its subsequent mathematical reasoning ability.
+
+Just as we did in the benchmarking and the downsampled training, we make extensive use of the Nvidia `apex` package for optimizing our training and inference across a distributed system of Nvidia A100 GPUs. All the extensive details about hyperparemeters can be found most thoroughly recited [on the CyberSolve-LinAlg-1.2 model card](https://huggingface.co/MarioBarbeque/CyberSolve-LinAlg-1.2). 
+
+Nonetheless, I began with 3 epochs of training across the 2M total records. Results were fantastic (86.6% exact match score), but I felt strongly, based on the consistent upward trend during training, that even better improvement could be further made. As such, an additional 2 epochs of training were conducted with a modified learning rate. 
+
+The ultimate CyberSolve-LinAlg-1.2 model checkpoint achieves an exact match score of 90.75% on solving linear equations from the DeepMind mathematics evaluation dataset.
+
+As a final step, we construct the partial correctness dataset containing predicted tokens, label tokens, decoded predictions, and decoded labels for eventual analysis of the model's partial correctness in mathematical reasoning. 
 
 ### Conclusion, Intersting Future Endeavors
+
+In summary, this project laid a solid foundation for my profound interest in understanding and advancing the mathematical reasoning capabilities of artificial neural models. 
+
+Further work is needed to better understand the extent to which neural models can both fully and partially reason in these various mathematical contexts. This work is currently constrained to the realm of 1-dimensional linear equations; it would be most interesting to expand on this base set of knowledge, as the DeepMind mathematics paper did, to see how well models learn different branches of mathematics with varying degress of rigor and complexity. 
+
+I hope to return to this project in the near future with an aim to both expand upon CyberSolve's base level of mathematical knowledge and to retrospectively analyse in well-defined detail the less commonly researched partial reasoning capability of the model with respect to knowledge it has attained.
+
+The longterm goal of my interest remains broadly training artificial neural models to achieve an advanced, expert-level understanding of modern mathematics.
+
