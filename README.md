@@ -9,7 +9,7 @@ JJ's talk was entitled "Highly Accurate Protein Structure Prediction and Its App
 
 ### Research and Engineering Overview
 
-Research began by thoroughly investigating a variety of interesting mathematics datasets, including the [Google DeepMind mathematics dataset](), the ___ dataset, etc., along with a number of compatible language models, including [FLAN-T5](), [Gemma](), and more. My ultimate hope was to identify a (some) large dataset(s) along with a specific pretrained model architecture/checkpoint that seemed jointly compatible for finetuning to the rigorous regime of mathematical analysis. After much research, the combination of the DeepMind mathematics dataset with the pretrained Google FLAN-T5-large model seemed a very solid candidate for finding eventually interesting and successful experimental results. Some guidance was provided by the [DeepMind publication]() that introduced the DeepMind mathematics dataset.
+Research began by thoroughly investigating a variety of interesting mathematics datasets, including the [Google DeepMind mathematics dataset](https://huggingface.co/datasets/deepmind/math_dataset), the [Nvidia OpenMathInstruct-2 dataset](https://huggingface.co/datasets/nvidia/OpenMathInstruct-2), etc., along with a number of compatible language models, including [FLAN-T5-large](https://huggingface.co/google/flan-t5-large), [Gemma-2-2B-it](https://huggingface.co/google/gemma-2-2b-it), and more. My ultimate hope was to identify a (some) large dataset(s) along with a specific pretrained model architecture/checkpoint that seemed jointly compatible for finetuning to the rigorous regime of mathematical analysis. After much research, the combination of the DeepMind mathematics dataset with the pretrained Google FLAN-T5-large model seemed a very solid combination for finding eventually interesting and successful experimental results. Some guidance was provided by the [DeepMind publication](https://arxiv.org/abs/1904.01557) that introduced the DeepMind mathematics dataset.
 
 
 ### Model Cards
@@ -28,10 +28,12 @@ This GPU-optimized inference of CyberSolve can be found here: [CyberSolve-LinAlg
 
 ### Notebooks
 
-This section contains links to the various notebooks used through the creation process.
+This section contains links to the various notebooks used through the research process.
 
-#### Preprocessing - [Preprocessing Notebook]()
+#### Preprocessing - [Preprocessing Notebook](https://github.com/johngrahamreynolds/CyberSolve-LinAlg/blob/main/preprocessing_and_inspection.ipynb)
 
 The notebook here contains the intial steps to conduct some of this analysis while also preprocessing and cleaning up the dataset with robust considerations for training and evaluation. 
 
 I took an interest in evaluating not only the exact correctness of the finetuned model, but also the partial correctness of the model's predictions. That is, did it somewhat accurately predict `21` when the answer was `21`, and so on. This subtelty turns out to be a difficult task; effort was dedicated in this first notebook to decipher a method that could scale across all predictions.
+
+### Benchmarking - [Benchmarking Notebook]()
