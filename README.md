@@ -42,7 +42,7 @@ This section contains links to the various notebooks used through the research p
 
 The notebook here contains the intial steps to conduct some of this analysis while also preprocessing and cleaning up the dataset with robust considerations for training and evaluation. 
 
-I took an interest in evaluating not only the exact correctness of the finetuned model, but also the partial correctness of the model's predictions. That is, did it somewhat accurately predict `21` when the answer was `21`, and so on. This subtelty turns out to be a difficult task; effort was dedicated in this first notebook to decipher a method that could scale across all predictions.
+I took an interest in evaluating not only the exact correctness of the finetuned model, but also the partial correctness of the model's predictions. That is, did the model somewhat accurately predict `21` when the answer was `-21`, and so on. This subtelty turns out to be a difficult task; effort was dedicated in this first notebook to decipher a method that could scale across all predictions.
 
 #### Benchmarking - [Benchmarking Notebook](https://github.com/johngrahamreynolds/CyberSolve-LinAlg/blob/main/benchmarking.ipynb)
 
