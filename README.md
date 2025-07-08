@@ -76,5 +76,7 @@ Further work is needed to better understand the extent to which neural models ca
 
 I hope to return to this project in the near future with an aim to both expand upon CyberSolve's base level of mathematical knowledge and to retrospectively analyse in well-defined detail the less commonly researched partial reasoning capability of the model with respect to knowledge it has attained.
 
+A large hurdle during this research process was the cost of longrunning cloud compute. In many ways, this financial struggle was a barrier to further enlightenment. Nonetheless, I am grate to Vanderbilt for allowing me the opportunity to conduct this research.
+
 The longterm goal of my interest remains broadly training artificial neural models to achieve an advanced, expert-level understanding of modern mathematics.
 
